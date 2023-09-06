@@ -579,7 +579,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-[50%] -translate-x-[50%]">
+        <div className="absolute flex justify-center bottom-8 px-8">
           <span className="text-sm text-center brightness-50">
             Developed by{" "}
             <span className="font-poppinsMedium">Garcia Sebastião</span>. All
