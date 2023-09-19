@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+
+import { motion } from "framer-motion";
+
 import {
   alien1,
   alien2,
@@ -7,6 +10,7 @@ import {
   closeIcon,
   cssIcon,
   cv,
+  dimukaKitadi,
   discordIcon,
   dragonIllustration,
   ecommerceIcon,
@@ -44,6 +48,13 @@ import Container from "../components/layout/Container";
 import Project from "../components/common/Project";
 import Service from "../components/common/Service";
 
+// HOOKS
+import {
+  bannerTextAnimation,
+  fadeAnimation,
+  scaleAnimation,
+} from "../assets/utils/animations";
+
 export default function Home() {
   const [header, setHeader] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
@@ -70,11 +81,12 @@ export default function Home() {
   return (
     <div className="w-full relative overflow-x-hidden">
       <nav
-        className={`fixed w-full  h-full top-0 left-0 bg-[#00000070] z-10 backdrop-blur-md transition duration-150 ${
+        className={`fixed w-full  h-full top-0 left-0 bg-[#00000070] z-40 backdrop-blur-md transition duration-150 ${
           openMenu ? "scale-100 rounded-md" : "scale-0 rounded-full"
         }`}
       >
         <div className="flex items-center h-full justify-center relative">
+          <img src={whiteLogo} className="w-10 absolute left-8 top-6" alt="" />
           <button
             onClick={() => setOpenMenu(false)}
             className="absolute top-6 right-8"
@@ -87,7 +99,7 @@ export default function Home() {
                 className="text-sm active hover:text-primary-color transition duration-150 focus:text-primary-color"
                 href="#home"
               >
-                Home
+                Inicio
               </a>
             </li>
             <li>
@@ -95,7 +107,7 @@ export default function Home() {
                 className="text-sm hover:text-primary-color transition duration-150 focus:text-primary-color"
                 href="#aboutme"
               >
-                About
+                Sobre
               </a>
             </li>
             <li>
@@ -103,7 +115,7 @@ export default function Home() {
                 className="text-sm hover:text-primary-color transition duration-150 focus:text-primary-color"
                 href="#myservices"
               >
-                Services
+                Serviços
               </a>
             </li>
             <li>
@@ -119,7 +131,7 @@ export default function Home() {
                 className="text-sm hover:text-primary-color transition duration-150 focus:text-primary-color"
                 href="#myexperience"
               >
-                Experience
+                Experiências
               </a>
             </li>
             <li>
@@ -127,7 +139,7 @@ export default function Home() {
                 className="text-sm hover:text-primary-color transition duration-150 focus:text-primary-color"
                 href="#mycontacts"
               >
-                Contacts
+                Contactos
               </a>
             </li>
           </ul>
@@ -154,7 +166,7 @@ export default function Home() {
                 className="text-sm active hover:text-primary-color transition duration-150 focus:text-primary-color"
                 href="#home"
               >
-                Home
+                Inicio
               </a>
             </li>
             <li>
@@ -162,7 +174,7 @@ export default function Home() {
                 className="text-sm hover:text-primary-color transition duration-150 focus:text-primary-color"
                 href="#aboutme"
               >
-                About
+                Sobre
               </a>
             </li>
             <li>
@@ -170,7 +182,7 @@ export default function Home() {
                 className="text-sm hover:text-primary-color transition duration-150 focus:text-primary-color"
                 href="#myservices"
               >
-                Services
+                Serviços
               </a>
             </li>
             <li>
@@ -186,7 +198,7 @@ export default function Home() {
                 className="text-sm hover:text-primary-color transition duration-150 focus:text-primary-color"
                 href="#myexperience"
               >
-                Experience
+                Experiencias
               </a>
             </li>
             <li>
@@ -194,7 +206,7 @@ export default function Home() {
                 className="text-sm hover:text-primary-color transition duration-150 focus:text-primary-color"
                 href="#mycontacts"
               >
-                Contacts
+                Contactos
               </a>
             </li>
           </ul>
@@ -203,7 +215,7 @@ export default function Home() {
         <ul className="flex items-center gap-3">
           <li>
             <a href="#">
-              <img className="w-6" src={githubIcon} alt="Githug" />
+              <img className="w-6" src={githubIcon} alt="Github" />
             </a>
           </li>
 
@@ -227,7 +239,7 @@ export default function Home() {
 
       <section
         id="home"
-        className="w-full relative py-44 pb-52 flex items-center justify-center px-28 border-b-2 border-gray-variation-1"
+        className="w-full relative py-44 pb-72 flex items-center justify-center  xs:px-16 lg:px-28 border-b-2 border-gray-variation-1"
       >
         <div
           className="w-28 h-28 absolute top-44
@@ -246,23 +258,45 @@ export default function Home() {
 
         <div className="flex flex-col items-center gap-9">
           <div className="flex flex-col items-center gap-2">
-            <h2 className="text-2xl font-poppinsMedium">Web Developer</h2>
-            <h1 className="xs:text-5xl lg:text-6xl text-center font-poppinsSemiBold">
+            <motion.h2
+              initial={scaleAnimation.initial}
+              whileInView={scaleAnimation.animate}
+              transition={scaleAnimation.transition}
+              className="text-2xl font-poppinsMedium"
+            >
+              Web Developer
+            </motion.h2>
+            <motion.h1
+              initial={fadeAnimation.initial}
+              whileInView={fadeAnimation.animate}
+              transition={fadeAnimation.transition}
+              className="xs:text-5xl lg:text-6xl text-center font-poppinsSemiBold"
+            >
               <span className="text-primary-color font-poppinsBold">
-                Konnichiwa!🐰
+                Konnichiwa!
+                <motion.span
+                  initial={bannerTextAnimation.initial}
+                  whileInView={bannerTextAnimation.animate}
+                  transition={{ duration: 1, delay: 2 }}
+                >
+                  🐰
+                </motion.span>
               </span>{" "}
               I'm Garcia Sebastião
-            </h1>
+            </motion.h1>
           </div>
 
-          <p className="text-center max-w-4xl">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi
-            nesciunt quibusdam ipsam a amet laborum rem cum voluptates quasi.
-            Assumenda illum impedit quisquam? Reiciendis fuga ullam autem! Nisi,
-            eveniet voluptas?
+          <p className="text-center lg:max-w-4xl">
+            Este é meu portfolio pessoal, onde falo um pouso sobre mim, minha
+            carreira como dev, e alguns projectos que desenvolvi durante esse
+            periodo. Caso pretenda obter meus serviços, meus contactos também
+            estarão disponíveis aqui.
           </p>
 
-          <Button className="bg-gradient-to-b py-5 px-10 from-primary-color to-secondary-color">
+          <Button
+            href="#aboutme"
+            className="bg-gradient-to-b py-5 px-10 from-primary-color to-secondary-color"
+          >
             <span className="text-white text-sm font-poppinsMedium">
               Saber mais
             </span>
@@ -292,18 +326,26 @@ export default function Home() {
          left-[40%] bottom-16 bg-secondary-color blur-3xl"
         ></div>
 
-        <div className="flex flex-col items-center gap-2">
+        <motion.div
+          initial={fadeAnimation.initial}
+          whileInView={fadeAnimation.animate}
+          transition={fadeAnimation.transition}
+          className="flex flex-col items-center gap-2"
+        >
           <span className="text-primary-color text-md font-poppinsMedium">
-            Know more
+            Saiba mais
           </span>
-          <h2 className="text-3xl text-white font-poppinsSemiBold">About Me</h2>
-        </div>
+          <h2 className="text-3xl text-white font-poppinsSemiBold">
+            Sobre mim
+          </h2>
+        </motion.div>
 
         <Text className="text-center max-w-3xl">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore
-          explicabo ab unde, a dignissimos reprehenderit perferendis temporibus
-          consequatur illo, labore quam, voluptatibus libero minima provident
-          enim? Odit dolores quas voluptatem.
+          Nasci no dia 23 de Abril de 2004. Sempre fui apaixonado pela
+          tecnologia já que desde pequeno sempre fui fascinado por computadores,
+          video jogos, e sempre desperava aquela curiosidade em mim em saber
+          como funcionava. Com isso decidi no ensino médio cursar Informática,
+          onde conheci o universo web, universo esse que trabalho até hoje.
         </Text>
 
         <Button
@@ -316,45 +358,85 @@ export default function Home() {
 
         <div className="mt-4">
           <ul className="flex items-center gap-6 justify-center max-w-md flex-wrap">
-            <li>
+            <motion.li
+              initial={scaleAnimation.initial}
+              whileInView={scaleAnimation.animate}
+              transition={scaleAnimation.transition}
+            >
               <img className="w-12" src={htmlIcon} alt="HTML" />
-            </li>
+            </motion.li>
 
-            <li>
+            <motion.li
+              initial={scaleAnimation.initial}
+              whileInView={scaleAnimation.animate}
+              transition={scaleAnimation.transition}
+            >
               <img className="w-12" src={cssIcon} alt="CSS" />
-            </li>
+            </motion.li>
 
-            <li>
+            <motion.li
+              initial={scaleAnimation.initial}
+              whileInView={scaleAnimation.animate}
+              transition={scaleAnimation.transition}
+            >
               <img className="w-12" src={javascriptIcon} alt="Javascript" />
-            </li>
+            </motion.li>
 
-            <li>
+            <motion.li
+              initial={scaleAnimation.initial}
+              whileInView={scaleAnimation.animate}
+              transition={scaleAnimation.transition}
+            >
               <img className="w-12" src={saasIcon} alt="SASS" />
-            </li>
+            </motion.li>
 
-            <li>
+            <motion.li
+              initial={scaleAnimation.initial}
+              whileInView={scaleAnimation.animate}
+              transition={scaleAnimation.transition}
+            >
               <img className="w-12" src={reactIcon} alt="ReactJs" />
-            </li>
+            </motion.li>
 
-            <li>
+            <motion.li
+              initial={scaleAnimation.initial}
+              whileInView={scaleAnimation.animate}
+              transition={scaleAnimation.transition}
+            >
               <img className="w-12" src={typescriptIcon} alt="Typescript" />
-            </li>
+            </motion.li>
 
-            <li>
+            <motion.li
+              initial={scaleAnimation.initial}
+              whileInView={scaleAnimation.animate}
+              transition={scaleAnimation.transition}
+            >
               <img className="w-12" src={phpIcon} alt="PHP" />
-            </li>
+            </motion.li>
 
-            <li>
+            <motion.li
+              initial={scaleAnimation.initial}
+              whileInView={scaleAnimation.animate}
+              transition={scaleAnimation.transition}
+            >
               <img className="w-12" src={mysqlIcon} alt="MYSQL" />
-            </li>
+            </motion.li>
 
-            <li>
+            <motion.li
+              initial={scaleAnimation.initial}
+              whileInView={scaleAnimation.animate}
+              transition={scaleAnimation.transition}
+            >
               <img className="w-12" src={figmaIcon} alt="Figma" />
-            </li>
+            </motion.li>
 
-            <li>
+            <motion.li
+              initial={scaleAnimation.initial}
+              whileInView={scaleAnimation.animate}
+              transition={scaleAnimation.transition}
+            >
               <img className="w-12" src={bootstrapIcon} alt="Bootstrap" />
-            </li>
+            </motion.li>
           </ul>
         </div>
       </Container>
@@ -370,53 +452,59 @@ export default function Home() {
          left-20 bg-secondary-color blur-3xl opacity-60"
         ></div>
 
-        <div className="flex flex-col items-center gap-2">
+        <motion.div
+          initial={fadeAnimation.initial}
+          whileInView={fadeAnimation.animate}
+          transition={fadeAnimation.transition}
+          className="flex flex-col items-center gap-2"
+        >
           <span className="text-primary-color text-md font-poppinsMedium">
-            Know about
+            Soiba sobre
           </span>
           <h2 className="text-3xl text-white font-poppinsSemiBold">
-            My Services
+            Meus Serviços
           </h2>
-        </div>
+        </motion.div>
 
-        <Text className="text-center">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil
-          inventore expedita.
+        <Text className="text-center max-w-2xl">
+          Aqu vocè poderá obter um dos meus planos de serviços a sua escolha, ou
+          poderá ter a liberdade de personalizar seu plano, de acordo ao seu
+          bolso😉.
         </Text>
 
         <div className="flex items-start mt-8 gap-6 flex-wrap">
           <Service
             icon={landingpageIcon}
             title="Landing Page"
-            description="Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Corporis illo aliquam quae in velit provident deserunt
-                reiciendis non voluptates beatae maxime ullam doloribus unde
-                voluptate, temporibus."
+            description="As landing pages são perfeitas para quem quer facilemnte expandir seu negõcio para 
+            um público maior, de forma a dar a conhecer de maneira mais rápida a existência do seu negócio. 
+            Ela é como um cartaz, so que na internet onde você poderá falar sobre seu negócio, apresentar 
+            seus serviços e contactos, da mesma forma como meu portfolio. Não é legal?!"
             price="90.000.00"
           />
 
           <Service
-            icon={landingpageIcon}
+            icon={websiteIcon}
             title="Web Sites"
-            description="Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Corporis illo aliquam quae in velit provident deserunt
-                reiciendis non voluptates beatae maxime ullam doloribus unde
-                voluptate, temporibus."
+            description="Web sites são formas ainda mais avançadas para expandir seu negócio. Assim como 
+            as landig pages, vocè poderá falar sobre seus serviços, mas coma vantagem de poder passar mais 
+            informações, e ainda permitir algumas funcionaliudades para tornar seu trabalho mais dinâmico como, 
+            agendamentos, atendimento online, etc."
             price="150.000.00"
           />
 
           <Service
             icon={ecommerceIcon}
             title="Ecommerces"
-            description="Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Corporis illo aliquam quae in velit provident deserunt
-                reiciendis non voluptates beatae maxime ullam doloribus unde
-                voluptate, temporibus."
+            description="As lojas virtuais são das mais modernas formas para se poder acelerar as vendas. 
+            Permitir que os seus clientes comprem apartir de casa, irá tornar suas vendas mais fáceis, rápidas 
+            e eficazes, podendo assim evitar enchentes e dias fatigados de trabalho por tanto andar de um lado ao 
+            foutro para lidar com vários clientes ao mesmo tempo."
             price="250.000.00"
           />
         </div>
       </Container>
-
+to
       <Container id="myportfolio" className="py-48">
         <div
           className="w-20 h-20 absolute
@@ -428,14 +516,19 @@ export default function Home() {
          left-20 bg-secondary-color blur-3xl opacity-60"
         ></div> */}
 
-        <div className="flex flex-col items-center gap-2">
+        <motion.div
+          initial={fadeAnimation.initial}
+          whileInView={fadeAnimation.animate}
+          transition={fadeAnimation.transition}
+          className="flex flex-col items-center gap-2"
+        >
           <span className="text-primary-color text-md font-poppinsMedium">
             Explore with
           </span>
           <h2 className="text-3xl text-white font-poppinsSemiBold">
             My Portfolio
           </h2>
-        </div>
+        </motion.div>
 
         <Text className="text-center">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil
@@ -493,24 +586,25 @@ export default function Home() {
         </div>
       </Container>
 
-      <Container id="myexperience" className="pb-44">
-        <div
-          className="w-20 h-20 absolute
-         left-20 top-0 bg-secondary-color blur-3xl"
-        ></div>
+      <Container id="myexperience">
         <div
           className="w-20 h-20 absolute
          right-20  bg-secondary-color blur-3xl"
         ></div>
 
-        <div className="flex flex-col items-center gap-2">
+        <motion.div
+          initial={fadeAnimation.initial}
+          animate={fadeAnimation.animate}
+          transition={fadeAnimation.transition}
+          className="flex flex-col items-center gap-2"
+        >
           <span className="text-primary-color text-md font-poppinsMedium">
             Know about
           </span>
           <h2 className="text-3xl text-white font-poppinsSemiBold">
             My Experience
           </h2>
-        </div>
+        </motion.div>
 
         <Text className="text-center">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil
@@ -518,14 +612,47 @@ export default function Home() {
         </Text>
 
         <div className="flex relative py-10 gap-16 w-3/4 justify-center items-center flex-wrap">
-          <img className="w-44" src={njila} alt="Njila Brand" />
-          <img className="w-44" src={pnclique} alt="Pn Clique" />
-          <img className="w-44" src={monabeleLogo} alt="Njila Brand" />
+          <motion.img
+            initial={scaleAnimation.initial}
+            animate={scaleAnimation.animate}
+            transition={scaleAnimation.transition}
+            whileHover={{ scale: 1.2 }}
+            className="w-44"
+            src={njila}
+            alt="Njila Brand"
+          />
+          <motion.img
+            initial={scaleAnimation.initial}
+            animate={scaleAnimation.animate}
+            transition={scaleAnimation.transition}
+            whileHover={{ scale: 1.2 }}
+            className="w-44"
+            src={pnclique}
+            alt="Pn Clique"
+          />
+          <motion.img
+            initial={scaleAnimation.initial}
+            animate={scaleAnimation.animate}
+            transition={scaleAnimation.transition}
+            whileHover={{ scale: 1.2 }}
+            className="w-44"
+            src={monabeleLogo}
+            alt="Njila Brand"
+          />
+          <motion.img
+            initial={scaleAnimation.initial}
+            animate={scaleAnimation.animate}
+            transition={scaleAnimation.transition}
+            whileHover={{ scale: 1.2 }}
+            className="w-44"
+            src={dimukaKitadi}
+            alt="Dimuka Kitadi"
+          />
         </div>
       </Container>
 
       <Container
-        id="mycotacts"
+        id="mycontacts"
         className="pb-48 pt-20 bg-gradient-to-t from-[#00000060] from-[50%] to-transparent h-[80vh] backdrop-blur-sm"
       >
         <div
@@ -539,18 +666,35 @@ export default function Home() {
 
         <img
           src={alien1}
-          className="w-[320px] opacity-10 -z-10 absolute top-10 left-[50%] -translate-x-[50%s]"
+          className="xs:w-[320px] lg:w-[500px] opacity-10 -z-10 absolute bottom-0 xs:-right-20 lg:right-0 "
           alt=""
         />
 
-        <div className="flex flex-col items-center gap-2">
+        <img
+          src={alien2}
+          className="xs:w-32 lg:w-72 opacity-20 absolute top-0 left-0 -rotate-45"
+          alt=""
+        />
+
+        <img
+          src={alien3}
+          className="xs:w-28 lg:w-56 opacity-20 absolute bottom-0 xs:left-0 lg:left-64"
+          alt=""
+        />
+
+        <motion.div
+          initial={fadeAnimation.initial}
+          animate={fadeAnimation.animate}
+          transition={fadeAnimation.transition}
+          className="flex flex-col items-center gap-2"
+        >
           <span className="text-primary-color text-md font-poppinsMedium">
             Get all
           </span>
           <h2 className="text-3xl text-white font-poppinsSemiBold">
             My Contacts
           </h2>
-        </div>
+        </motion.div>
 
         <Text className="text-center">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil
@@ -558,25 +702,45 @@ export default function Home() {
         </Text>
 
         <div className="flex relative py-10 gap-6 w-3/4 justify-center items-center flex-wrap">
-          <div className="flex brightness-80 items-center gap-4">
+          <motion.div
+            initial={scaleAnimation.initial}
+            animate={scaleAnimation.animate}
+            transition={scaleAnimation.transition}
+            className="flex brightness-80 items-center gap-4"
+          >
             <img className="w-6" src={phoneIcon} alt="Phone Number" />
             <span className="text-sm">+244 934 889 417</span>
-          </div>
+          </motion.div>
 
-          <div className="flex brightness-80 items-center gap-4">
+          <motion.div
+            initial={scaleAnimation.initial}
+            animate={scaleAnimation.animate}
+            transition={scaleAnimation.transition}
+            className="flex brightness-80 items-center gap-4"
+          >
             <img className="w-6" src={phoneIcon} alt="Phone Number" />
             <span className="text-sm">+244 952 011 203</span>
-          </div>
+          </motion.div>
 
-          <div className="flex brightness-80 items-center gap-4">
+          <motion.div
+            initial={scaleAnimation.initial}
+            animate={scaleAnimation.animate}
+            transition={scaleAnimation.transition}
+            className="flex brightness-80 items-center gap-4"
+          >
             <img className="w-6" src={emailIcon} alt="Email" />
             <span className="text-sm">garciapedro.php@outlook.com</span>
-          </div>
+          </motion.div>
 
-          <div className="flex brightness-80 items-center gap-4">
+          <motion.div
+            initial={scaleAnimation.initial}
+            animate={scaleAnimation.animate}
+            transition={scaleAnimation.transition}
+            className="flex brightness-80 items-center gap-4"
+          >
             <img className="w-6" src={emailIcon} alt="Email" />
             <span className="text-sm">garciasebastiao.php@gmail.com</span>
-          </div>
+          </motion.div>
         </div>
 
         <div className="absolute flex justify-center bottom-8 px-8">

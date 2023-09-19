@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { scaleAnimation } from "../../assets/utils/animations";
 
 export default function Project({ image, alt, title, description }) {
   const [overlay, setOverlay] = useState(false);
 
   return (
-    <div
+    <motion.div
+      initial={scaleAnimation.initial}
+      whileInView={scaleAnimation.animate}
+      transition={scaleAnimation.transition}
       onMouseOver={() => setOverlay(true)}
       onMouseOut={() => setOverlay(false)}
       className="project rounded-lg relative flex-1 h-80 min-w-[320px] shadow-lg shadow-[#00000050]"
@@ -32,6 +37,6 @@ export default function Project({ image, alt, title, description }) {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

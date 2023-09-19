@@ -23,16 +23,15 @@ const modalAnimation = {
 const bannerTextAnimation = {
   initial: {
     scale: 0.5,
-    opacity: 0.3,
   },
   animate: {
     scale: 1,
-    opacity: 1,
   },
   transition: {
     type: "spring",
     damping: 4,
     mass: 0.5,
+    Infinity,
     stiffness: 30,
   },
 };

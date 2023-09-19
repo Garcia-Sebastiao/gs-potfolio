@@ -34,6 +34,7 @@ import dragonIllustration1 from "./images/svg/dragon-1.svg";
 import njila from "./images/experience/njila.svg";
 import pnclique from "./images/experience/pnclique.svg";
 import monabeleLogo from "./images/experience/monabele.svg";
+import dimukaKitadi from "./images/experience/dimukakitadi.svg";
 
 // images
 import pnCars from "./images/portfolio/pncars.png";
@@ -86,4 +87,5 @@ export {
   alien1,
   alien2,
   alien3,
+  dimukaKitadi,
 };
